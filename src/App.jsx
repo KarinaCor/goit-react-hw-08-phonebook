@@ -1,12 +1,13 @@
 import { lazy, useEffect } from "react"
 import { Suspense } from "react"
 import { Route, Routes } from "react-router-dom"
-import { Layout } from "./components/Layout/Layout"
+
 import { useDispatch } from "react-redux"
 import { refreshThunk } from "redux/auth/authOperation"
 import * as ROUTES from '../src/constants/routes'
 import RestrictRoute from "components/RestrictedRoute"
 import PrivateRoute from "components/PrivateRoute"
+import Layout from "components/Layout/Layout"
 
 
 
@@ -57,6 +58,4 @@ export const App = () => {
   )
 }
 
- {/* <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/register" element={<RegisterPage/>}/>
-          <Route path="/contacts" element={<ContactsPage/>}/> */}
+ 
