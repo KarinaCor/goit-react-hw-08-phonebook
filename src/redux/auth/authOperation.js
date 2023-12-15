@@ -2,14 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: 'https://connections-api.herokuapp.com/',
-    headers: {
-        Authorization: `Bearer some_access_token`
-    }
+    baseURL: 'https://connections-api.herokuapp.com',
+  
 })
 
 const setToken = (token) => {
-instance.defaults.headers.common.Authorization = `'Bearer ${token}'`;
+instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 }
 
 export const loginThunk = createAsyncThunk(

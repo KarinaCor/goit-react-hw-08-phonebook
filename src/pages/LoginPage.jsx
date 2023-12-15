@@ -2,6 +2,7 @@ import React from "react"
 import { useDispatch } from "react-redux"
 import { toast } from "react-toastify"
 import { loginThunk } from "redux/auth/authOperation"
+import * as SC from '../pages/LoginPage.styled'
 
 const LoginPage = () => {
     const dispatch = useDispatch()
@@ -26,21 +27,21 @@ const onSubmit = e => {
 }
 
     return (
-        <form onSubmit={onSubmit}>
-            <label>
-                <p>Email:</p>
-                <input type="email" placeholder="hotmail@hotmail.com" required name="userEmail" />
-            </label>
-            <label>
-                <p>Password:</p>
-                <input type="password" placeholder="******" required name="userPassword" minLength={7}/>
+        <SC.Form onSubmit={onSubmit}>
+            <SC.Label>
+                <SC.Text>Email:</SC.Text>
+                <SC.Input type="email" placeholder="hotmail@hotmail.com" required name="userEmail" />
+            </SC.Label>
+            <SC.Label>
+                <SC.Text>Password:</SC.Text>
+                <SC.Input type="password" placeholder="******" required name="userPassword" minLength={7}/>
 
-            </label>
+            </SC.Label>
             <br/>
-            <button type="submit">
+            <SC.Button type="submit">
                 Sign In
-            </button>
-        </form>
+            </SC.Button>
+        </SC.Form>
     )
 }
 

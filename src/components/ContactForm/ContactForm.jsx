@@ -34,7 +34,7 @@ const contacts = useSelector(selectContacts);
     }
     const newContact = {
       name,
-      phone:number,
+      number,
       id: nanoid(),
     };
      dispatch(addContactsThunk(newContact))

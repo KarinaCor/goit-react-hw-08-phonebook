@@ -21,7 +21,9 @@ const ContactList = () => {
   const getFilteredContact = contacts?.filter(({ name }) =>
     name.toLowerCase().includes(filter)
   );
-console.log (contacts)
+console.log ('filter', filter)
+console.log ('contacts', contacts)
+
   return (
     
   

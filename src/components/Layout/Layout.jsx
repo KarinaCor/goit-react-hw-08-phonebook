@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import * as SC from '../Layout/Layout.styled'
 
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,23 +21,24 @@ const Layout = ({ children }) => {
     return (
         <div>
           
-            <header>
-                <NavLink to="/">Home</NavLink>
+            <SC.Header>
+                <SC.Link to="/">Home</SC.Link>
                     {authenticated &&  <div>
                         <span>Hello, {userData.name}!</span>{' '}
-                        <button onClick={onLogOut}>Log Out</button>
+                        <SC.Button onClick={onLogOut}>Log Out</SC.Button>
                     </div>}
                    
-                    <NavLink to="/login">Login</NavLink>
-                    <NavLink to="/register">Register</NavLink>
-                    <NavLink to="/contacts">Contacts</NavLink>
+                    <SC.Link to="/login">Login</SC.Link>
+                    <SC.Link to="/register">Register</SC.Link>
+                    <SC.Link to="/contacts">Contacts</SC.Link>
                     <Suspense fallback = {null}>
                         <Outlet />
                     </Suspense>
-            </header>
+            </SC.Header>
             <main>{children}</main>
         </div>
     );
 };
 
 export default Layout
+

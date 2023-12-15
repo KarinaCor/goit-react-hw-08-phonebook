@@ -2,12 +2,13 @@ import { lazy, useEffect } from "react"
 import { Suspense } from "react"
 import { Navigate, Route, Routes } from "react-router-dom"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { refreshThunk } from "redux/auth/authOperation"
 import * as ROUTES from '../src/constants/routes'
 import RestrictRoute from "components/RestrictedRoute"
 import PrivateRoute from "components/PrivateRoute"
 import Layout from "components/Layout/Layout"
+import { selectAuthenticated } from "redux/auth/auth.selector"
 
 
 
@@ -48,10 +49,12 @@ const appRoutes = [
 
 export const App = () => {
   const dispatch = useDispatch()
+  const token = useSelector(selectAuthenticated)
 
   useEffect(() => {
+    if (!token) return;
     dispatch(refreshThunk())
-  },[dispatch])
+  },[dispatch,token])
   return(
     <>
   

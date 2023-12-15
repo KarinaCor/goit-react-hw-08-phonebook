@@ -2,13 +2,13 @@ import ContactForm from "components/ContactForm/ContactForm"
 import ContactList from "components/ContactList/ContactList"
 import Filter from "components/Filter/Filter"
 import Loader from "components/Loader/Loader"
-import { Modal } from "components/Modal/Modal"
+
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { selectIsLoading } from "redux/auth/auth.selector"
 import { selectContacts } from "redux/contacts/contacts.selector"
 import { fetchContactsThunk } from "redux/contacts/contactsOperation"
-import { selecIsOpenModal } from "redux/modal/modal.selector"
+
 
 
 
@@ -20,7 +20,7 @@ const ContactsPage = () => {
     
     const contacts = useSelector(selectContacts)
     const isLoading = useSelector(selectIsLoading)
-    const isOpenModal = useSelector(selecIsOpenModal)
+    
     
 
     useEffect(() => {
@@ -46,7 +46,7 @@ dispatch(fetchContactsThunk())
       <ContactForm/>
       {contacts.length !== 0 && <Filter />}
       {isLoading ? <Loader /> : <ContactList />}
-      {isOpenModal && <Modal/>}
+    
       </>
       
     )

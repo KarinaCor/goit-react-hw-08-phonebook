@@ -15,6 +15,7 @@ import {
 import { authSlice } from './auth/auth.reducer';
 import storage from 'redux-persist/lib/storage'
 import { contactsSlice } from './contacts/contacts.reducer';
+import { filterSlice } from './filter/filter.slice';
 
 
 
@@ -31,6 +32,7 @@ export const store = configureStore({
    
     [authSlice.name]: persistReducer(authConfig,authSlice.reducer),
     [contactsSlice.name]: contactsSlice.reducer,
+    [filterSlice.name] : filterSlice.reducer
 
     
   },

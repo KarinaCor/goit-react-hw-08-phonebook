@@ -36,7 +36,7 @@ export const authSlice = createSlice({
         
     })
     .addCase(logOutThunk.fulfilled,() => {
-        return initialState
+        return initialState;
         
     })
     .addMatcher(isAnyOf(
