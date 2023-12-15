@@ -1,5 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
+import { toast } from "react-toastify"
 import { registerThunk } from "redux/auth/authOperation"
 
 const RegisterPage = () => {
@@ -8,9 +9,10 @@ const RegisterPage = () => {
     const onSubmit = e => {
         e.preventDefault()
     
+        const name = e.currentTarget.elements.userName.value;
         const email = e.currentTarget.elements.userEmail.value;
         const password = e.currentTarget.elements.userPassword.value;
-        const name = e.currentTarget.elements.userName.value;
+        
 
         const formData = {
             name,
@@ -19,6 +21,10 @@ const RegisterPage = () => {
             
         }
         dispatch(registerThunk(formData))
+        .unwrap()
+        .catch(() =>
+          toast.error('Incorrect e-mail address or password. Try again.')
+        );
     }
 
    

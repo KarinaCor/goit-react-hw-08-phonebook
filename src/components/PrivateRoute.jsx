@@ -1,4 +1,4 @@
-import { CONTACTS_ROUTE, LOGIN_ROUTE } from "constants/routes";
+import { LOGIN_ROUTE } from "constants/routes";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { selectAuthenticated } from "redux/auth/auth.selector";

@@ -43,7 +43,7 @@ export const authSlice = createSlice({
         loginThunk.pending,
          registerThunk.pending,
           refreshThunk.pending,
-          logOutThunk .pending,
+          logOutThunk.pending,
           ), 
           state => {
         state.isLoading = true;

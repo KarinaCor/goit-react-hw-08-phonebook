@@ -1,6 +1,6 @@
 import { lazy, useEffect } from "react"
 import { Suspense } from "react"
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 import { useDispatch } from "react-redux"
 import { refreshThunk } from "redux/auth/authOperation"
@@ -11,20 +11,27 @@ import Layout from "components/Layout/Layout"
 
 
 
-const LoginPage = lazy(() => import('pages/LoginPage'))
-const RegisterPage = lazy(() => import('pages/RegisterPage'))
-const ContactsPage = lazy(() => import('pages/ContactsPage'))
 
-const AppRoutes = [
+
+const LoginPage = lazy(() => import('./pages/LoginPage'))
+const RegisterPage = lazy(() => import('./pages/RegisterPage'))
+const ContactsPage = lazy(() => import('./pages/ContactsPage'))
+const HomePage = lazy(() => import('./pages/HomePage'))
+
+const appRoutes = [
+  {
+    path: ROUTES.HOME_ROUTE,
+    element: <HomePage />,
+  },
   {
     path: ROUTES.LOGIN_ROUTE,
-    element: <RestrictRoute>
+    element: <RestrictRoute navigateTo={ROUTES.CONTACTS_ROUTE}>
       <LoginPage/>
       </RestrictRoute>,
   },
   {
     path: ROUTES.REGISTER_ROUTE,
-    element: <RestrictRoute>
+    element: <RestrictRoute navigateTo={ROUTES.HOME_ROUTE}>
    <RegisterPage/>
     </RestrictRoute>,
   },
@@ -46,16 +53,21 @@ export const App = () => {
     dispatch(refreshThunk())
   },[dispatch])
   return(
+    <>
+  
     <Layout>
       <Suspense>
         <Routes>
-         {AppRoutes.map(({path,element}) => {
-          <Route key = {path} path = {path} element = {element}/>
-         })}
+         {appRoutes.map(({path,element}) => <Route key = {path} path = {path} element = {element}/>
+         )}
+          <Route path="*" element={<Navigate to="/" />} />
+          
         </Routes>
       </Suspense>
     </Layout>
+    </>
+  
   )
 }
 
- 
+
