@@ -21,7 +21,7 @@ import { filterSlice } from './filter/filter.slice';
 
 
 
-const authConfig ={
+const authConfig = {
     key:'auth',
     storage,
     whitelist:['token']

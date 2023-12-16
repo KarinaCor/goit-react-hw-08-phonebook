@@ -31,8 +31,9 @@ export const authSlice = createSlice({
     })
     .addCase(refreshThunk.fulfilled,(state, {payload}) => {
         state.isLoading = false;
-        state.userData =  payload;
         state.authenticated = true;
+        state.userData =  payload;
+       
         
     })
     .addCase(logOutThunk.fulfilled,() => {
@@ -58,6 +59,7 @@ export const authSlice = createSlice({
      (state, {payload}) => {
     state.isLoading = false;
         state.error =  payload;
+       
 })
 
 })
